@@ -11,17 +11,18 @@ var pageElements ={
     popupAlert: '//div[@class= "pt-toast pt-intent-success pt-overlay-content"]',
     ipAdicionado : '//td[2]/div/div[2]/a',
     btnRemoveIp: '[data-test-id="network-remove"]',
-    btnConfirmRemove: '[data-test-id="delete-network"]'
+    btnConfirmRemove: '[data-test-id="delete-network"]',
+    closePoUp: '//button[@class="pt-button pt-icon-cross"]'
 }
 
 var timeToSleep = 10000;
 
 function gerarIpRandomico(){
     //177.54.50.194
-    var number1 = Math.floor(Math.random() * 255);
-    var number2 = Math.floor(Math.random() * 255);
-    var number3 = Math.floor(Math.random() * 255);
-    var number4 = Math.floor(Math.random() * 255);
+    var number1 = Math.floor(Math.random() * 100);
+    var number2 = Math.floor(Math.random() * 100);
+    var number3 = Math.floor(Math.random() * 100);
+    var number4 = Math.floor(Math.random() * 100);
     return number1+"."+number2+"."+number3+"."+number4
 }
 
@@ -68,6 +69,8 @@ When(/^verifico se apareceu o popup de sucesso$/, () => {
         .useXpath()
         .waitForElementPresent(pageElements.popupAlert, timeToSleep)
         .assert.elementPresent(pageElements.popupAlert)
+        .assert.containsText(pageElements.popupAlert,'Network "Teste automação" added successfully')
+        .click(pageElements.closePoUp)
         .useCss()
 });
 
@@ -82,10 +85,10 @@ Then(/^eu excluo o ip dinamico "(.*?)"$/, (ipName) => {
         .waitForElementVisible(pageElements.btnConfirmRemove,timeToSleep, function (){
             this.click(pageElements.btnConfirmRemove)
         })
-        .pause(5000)
         .useXpath()
         .waitForElementPresent(pageElements.popupAlert, timeToSleep)
         .assert.elementPresent(pageElements.popupAlert)
+        .assert.containsText(pageElements.popupAlert, 'Network "'+ipName+'" successfully removed!')
         .useCss()
         
 });
