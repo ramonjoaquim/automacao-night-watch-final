@@ -1,0 +1,21 @@
+{
+  "name": "automacao-night-watch-final",
+  "version": "1.0.0",
+  "description": "Autmation nightwatch with cucumber",
+  "main": "index.js",
+  "scripts": {
+    "test": "mkdirp report && cucumber-js --require cucumber.conf.js --require steps --format node_modules/cucumber-pretty --format json:report/cucumber_report.json"
+  },
+  "author": "Ramon",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^76.0.1",
+    "cucumber": "^5.1.0",
+    "cucumber-html-reporter": "^5.0.2",
+    "cucumber-pretty": "^1.5.2",
+    "geckodriver": "^1.16.2",
+    "nightwatch": "^1.2.2",
+    "nightwatch-api": "^2.3.0",
+    "selenium": "^2.20.0"
+  }
+}
