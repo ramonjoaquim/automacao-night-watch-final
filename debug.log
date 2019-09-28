@@ -1,2 +1,4 @@
 [0921/105701.609:ERROR:file_io.cc(134)] WriteFile: O pipe está sendo fechado. (0xE8)
 [0921/115244.298:ERROR:file_io.cc(134)] WriteFile: O pipe está sendo fechado. (0xE8)
+[0928/102824.995:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0928/102825.030:ERROR:exception_snapshot_win.cc(98)] thread ID 1556 not found in process
