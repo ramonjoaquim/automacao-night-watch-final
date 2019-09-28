@@ -1,6 +1,5 @@
 #testeInserirEFiltrar
 @testeInserirEFiltrar
-
 Feature: Teste adicionando sites e filtrando
     Adicionado 3 sites e filtros pelos mesmos no campos de busca e certificando que foi filtrado e os outros estão ocultos
 
@@ -12,7 +11,8 @@ Background: logar no sistema
   And clicar no botão login
   Then eu devo estar logado
 
+@inserirSites
 Scenario: inserir sites
     Given acessar o menu Deployments e o submenu sites
-    And clicar no botão Add
-    When inseriro os sites
+    When inserir "3" sites
+    Then eu procuro pelos "3" sites e certifico que o site filtrado está presente e os demais não estão presente

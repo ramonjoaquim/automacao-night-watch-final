@@ -13,7 +13,7 @@ module.exports = {
         javascriptEnabled: true,
         acceptSslCerts: true,
         chromeOptions: {
-            args: ['incognito', 'no-sandbox', 'disable-gpu']
+            args: ['window-size=1280,800','headless','start-maximized','incognito', 'no-sandbox', 'disable-gpu']
         }
       },
       screenshots:{

@@ -13,7 +13,8 @@
     "cucumber": "^5.1.0",
     "cucumber-html-reporter": "^5.0.2",
     "cucumber-pretty": "^1.5.2",
-    "geckodriver": "^1.16.2",
+    "geckodriver": "^1.18.0",
+    "install": "^0.13.0",
     "nightwatch": "^1.2.2",
     "nightwatch-api": "^2.3.0",
     "selenium": "^2.20.0"

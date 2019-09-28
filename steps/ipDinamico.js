@@ -1,7 +1,7 @@
 const { client } = require('nightwatch-api');
 const { Given, Then, When } = require('cucumber');
 
-var pageElements ={
+let pageElements ={
     menuDeployments: '[data-test-id="site-menu-deployments"]',
     menuSites: '[data-test-id="site-menu-subitem-sites"]',
     btnAdd: '[data-test-id="network-list-add-button"]',
@@ -15,16 +15,21 @@ var pageElements ={
     closePoUp: '//button[@class="pt-button pt-icon-cross"]'
 }
 
-var timeToSleep = 10000;
-
+let timeToSleep = 10000;
+let result = null;
 function gerarIpRandomico(){
     //177.54.50.194
     var number1 = Math.floor(Math.random() * 100);
     var number2 = Math.floor(Math.random() * 100);
     var number3 = Math.floor(Math.random() * 100);
     var number4 = Math.floor(Math.random() * 100);
-    return number1+"."+number2+"."+number3+"."+number4
+    result = number1+"."+number2+"."+number3+"."+number4;
+    return result;
 }
+
+module.exports = {
+    gerarIpRandomico: gerarIpRandomico
+};
 
 Given(/^acessar o menu Deployments e o submenu sites$/, () => {
     return client  
@@ -75,13 +80,14 @@ When(/^verifico se apareceu o popup de sucesso$/, () => {
 });
 
 Then(/^eu excluo o ip dinamico "(.*?)"$/, (ipName) => {
+    let ipRemover = '//tr[contains(.,"'+ipName+'")]//button[@title="Remove Network"]';
     return client   
         .useXpath() 
         .assert.containsText(pageElements.ipAdicionado,ipName)
-        .useCss()
-        .waitForElementVisible(pageElements.btnRemoveIp,timeToSleep, function (){
-            this.click(pageElements.btnRemoveIp)
+        .waitForElementVisible(ipRemover,timeToSleep, function (){
+            this.click(ipRemover)
         })
+        .useCss()
         .waitForElementVisible(pageElements.btnConfirmRemove,timeToSleep, function (){
             this.click(pageElements.btnConfirmRemove)
         })
